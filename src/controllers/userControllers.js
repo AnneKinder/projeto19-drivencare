@@ -12,6 +12,20 @@ async function signUp(req, res) {
   }
 }
 
+async function signIn(req, res) {
+  const {email, password} = req.body;
+
+  try {
+    await userServices.signIn({email, password})
+    return res.sendStatus(201);
+
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+}
+
+
 export default {
   signUp,
+  signIn
 };

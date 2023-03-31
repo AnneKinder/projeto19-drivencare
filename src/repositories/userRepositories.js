@@ -16,7 +16,18 @@ async function signUp({name, email, password, isMedic}){
     `, [name, email, password, isMedic])
 }
 
+async function signIn({email, password}){
+
+    console.log("chegou no  db do signin")
+    // await db.query(`
+    //     INSERT INTO sessions
+    //     (email, password, "isMedic")
+    //     VALUES ($1, $2, $3, $4)
+    // `, [name, email, password, isMedic])
+}
+
 export default{
     findByEmail,
-    signUp
+    signUp,
+    signIn
 }

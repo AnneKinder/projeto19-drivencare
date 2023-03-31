@@ -12,6 +12,16 @@ async function signUp({name, email, password, isMedic}) {
 
 }
 
+async function signIn({email, password}) {
+
+  const {rowCount} = await userRepositories.findByEmail({email})
+  if(!rowCount) throw new Error("User not found.");
+
+
+}
+
+
 export default {
   signUp,
+  signIn
 };
