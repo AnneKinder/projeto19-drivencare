@@ -16,14 +16,13 @@ async function signUp({name, email, password, isMedic}){
     `, [name, email, password, isMedic])
 }
 
-async function signIn({email, password}){
+async function signIn({userId, token}){
 
-    console.log("chegou no  db do signin")
-    // await db.query(`
-    //     INSERT INTO sessions
-    //     (email, password, "isMedic")
-    //     VALUES ($1, $2, $3, $4)
-    // `, [name, email, password, isMedic])
+    await db.query(`
+        INSERT INTO sessions
+        ("userId", token)
+        VALUES ($1, $2)
+    `, [userId, token])
 }
 
 export default{
