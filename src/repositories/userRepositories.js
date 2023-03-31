@@ -25,8 +25,27 @@ async function signIn({userId, token}){
     `, [userId, token])
 }
 
+async function findSessionByToken({token}){
+    return await db.query(`
+        SELECT *
+        FROM sessions
+        WHERE token=$1
+        `, [token])
+    }
+
+async function findUserById({userId}){
+    return await db.query(`
+    SELECT *
+    FROM users
+    WHERE id=$1
+    `, [userId])
+}
+
+
 export default{
     findByEmail,
     signUp,
-    signIn
+    signIn,
+    findSessionByToken,
+    findUserById
 }

@@ -1,8 +1,11 @@
 import { Router } from "express";
 import medicControllers from "../controllers/medicControllers.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
+import { validateSchema } from "../middlewares/schemaValidationMiddleware.js";
+import {medicSchema} from "../schemas/medicSchema.js" ;
 
 const medicRoutes = Router();
 
-medicRoutes.post("/medic-form", medicControllers.medicForm);
+medicRoutes.post("/medic-form", authMiddleware.authValidation,validateSchema(medicSchema), medicControllers.medicForm);
 
 export default medicRoutes;

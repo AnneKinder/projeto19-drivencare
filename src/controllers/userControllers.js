@@ -24,7 +24,6 @@ async function signIn(req, res) {
   }
 }
 
-
 export default {
   signUp,
   signIn

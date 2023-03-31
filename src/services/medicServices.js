@@ -1,13 +1,12 @@
 import userRepositories from '../repositories/userRepositories.js'
 import medicRepositories from '../repositories/medicRepositories.js';
 
-async function medicForm({name, email, password, isMedic}) {
+async function medicForm({id, specialty, location}) {
 
-//   const {rowCount} = await userRepositories.findByEmail({email})
-//   if(rowCount) throw new Error("User already exists.");
+  const {rowCount} = await userRepositories.findUserById({id})
+  if(rowCount) throw new Error("Medic already registered.");
 
-
-//   await userRepositories.medicForm({name, email, password: hashPassword, isMedic})
+  await medicRepositories.medicForm({id, specialty, location})
 
 }
 

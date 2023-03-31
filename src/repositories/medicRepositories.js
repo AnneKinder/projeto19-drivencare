@@ -1,26 +1,11 @@
 import {db} from "../config/database.js"
 
-
-// async function findByEmail({email}){
-//     return await db.query(`
-//     SELECT *
-//     FROM users
-//     WHERE email=$1
-//     `, [email])
-// }
-
-// async function signUp({name, email, password, isMedic}){
-//     await db.query(`
-//         INSERT INTO users
-//         (name, email, password, "isMedic")
-//         VALUES ($1, $2, $3, $4)
-//     `, [name, email, password, isMedic])
-// }
-
-
-async function medicForm({name, email, password, isMedic}){
- 
-    console.log("Chegou no repository")
+async function medicForm({id, specialty, location}){
+    await db.query(`
+    INSERT INTO medics
+    ("userId", specialty, location)
+    VALUES ($1, $2, $3)
+`, [id, specialty, location])
 }
 
 export default{

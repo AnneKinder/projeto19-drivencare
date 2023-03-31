@@ -1,11 +1,12 @@
 import medicServices from "../services/medicServices.js";
 
 async function medicForm(req, res) {
-  const {name, email, password, isMedic} = req.body;
+  const {specialty, location} = req.body;
+  const {id} = res.locals.user
 
   try {
-    // await userServices.signUp({name, email, password, isMedic})
-    return res.sendStatus(201);
+    await medicServices.medicForm({id, specialty, location})
+    return res.status(201).send("Doctor registered successfully.")
 
   } catch (err) {
     return res.status(500).send(err.message);
