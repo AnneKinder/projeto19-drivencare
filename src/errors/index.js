@@ -29,7 +29,7 @@ export function unauthorizedError(){
 export function notFoundError(){
     return {
         name: "NotFoundError",
-        message: "No result for this search!."
+        message: "No results for this search!"
     }
 }
 
