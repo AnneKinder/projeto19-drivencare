@@ -1,6 +1,6 @@
 import userServices from "../services/userServices.js";
 
-async function signUp(req, res) {
+async function signUp(req, res, next) {
   const {name, email, password, isMedic} = req.body;
 
   try {
@@ -8,11 +8,11 @@ async function signUp(req, res) {
     return res.sendStatus(201);
 
   } catch (err) {
-    return res.status(500).send(err.message);
+    next(err)
   }
 }
 
-async function signIn(req, res) {
+async function signIn(req, res, next) {
   const {email, password} = req.body;
 
   try {
@@ -20,7 +20,7 @@ async function signIn(req, res) {
     return res.status(201).send({token});
 
   } catch (err) {
-    return res.status(500).send(err.message);
+    next(err)
   }
 }
 

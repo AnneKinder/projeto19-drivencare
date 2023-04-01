@@ -1,6 +1,6 @@
 import medicServices from "../services/medicServices.js";
 
-async function medicForm(req, res) {
+async function medicForm(req, res, next) {
   const {specialty, location} = req.body;
   const {id} = res.locals.user
 
@@ -9,7 +9,7 @@ async function medicForm(req, res) {
     return res.status(201).send("Doctor registered successfully.")
 
   } catch (err) {
-    return res.status(500).send(err.message);
+    next(err)
   }
 }
 
