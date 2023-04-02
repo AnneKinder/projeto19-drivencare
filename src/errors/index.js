@@ -5,10 +5,11 @@ export function conflictError(message){
     }
 }
 
-export function duplicatedEmailError(){
+export function duplicatedEmailError(email){
     return {
         name: "DuplicatedEmailError",
-        message: "E-mail already in use."
+        message: "E-mail already in use.",
+        email
     }
 }
 
